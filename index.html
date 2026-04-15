@@ -471,9 +471,7 @@
             left: 0; right: 0;
             padding: 12px 0;
             border-top: 1px solid var(--border);
-            background: rgba(245, 244, 240, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: var(--bg);
             overflow: hidden;
             white-space: nowrap;
             z-index: 150;
@@ -481,8 +479,10 @@
 
         .marquee-track {
             display: inline-flex;
-            animation: marquee 30s linear infinite;
             width: max-content;
+            -webkit-animation: marquee 30s linear infinite;
+            animation: marquee 30s linear infinite;
+            will-change: transform;
         }
 
         .marquee-item {
@@ -501,9 +501,13 @@
             flex-shrink: 0;
         }
 
+        @-webkit-keyframes marquee {
+            0%   { -webkit-transform: translateX(0); transform: translateX(0); }
+            100% { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+        }
         @keyframes marquee {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
+            0%   { -webkit-transform: translateX(0); transform: translateX(0); }
+            100% { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
         }
 
         /* ==========================================
