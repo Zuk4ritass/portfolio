@@ -721,7 +721,7 @@
             border: 1px solid var(--border);
             border-radius: 100px;
             text-align: center;
-            content: 'Available for remote & on-site work';
+            content: 'Available for remote work';
             letter-spacing: 0.03em;
         }
 
@@ -882,25 +882,40 @@
             .hero {
                 grid-template-columns: 1fr;
                 align-items: flex-end;
+                min-height: auto;
+                padding-top: calc(var(--nav-h) + 24px);
+                padding-bottom: 48px;
             }
             .hero-portrait { display: none; }
-            .hero-bottom { flex-direction: column; align-items: flex-start; }
             .hero-scroll { display: none; }
+            .hero-eyebrow { margin-bottom: 16px; }
+            .hero-bottom { flex-direction: column; align-items: flex-start; margin-top: 32px; }
+
+            .marquee { padding: 18px 0; }
+            .marquee-item { font-size: 18px; padding: 0 16px; gap: 16px; }
+
+            .work { padding: 64px var(--pad); }
+            .work-header { margin-bottom: 36px; }
 
             .project-card { grid-template-columns: 1fr; }
             .project-card:nth-child(even) .project-card-image { order: 1; }
             .project-card:nth-child(even) .project-card-body  { order: 2; }
             .project-card-image { aspect-ratio: 16/10; }
 
+            .clients { padding: 0 var(--pad) 64px; }
             .clients-strip {
                 flex-wrap: wrap; gap: 32px;
                 justify-content: center;
                 padding: 36px 28px;
             }
 
+            .about { padding: 64px var(--pad); }
             .about-inner { grid-template-columns: 1fr; }
             .about-photo-wrap { position: static; }
             .about-photo { aspect-ratio: 16/10; object-position: top center; }
+            .about-eyebrow { margin-bottom: 32px; }
+
+            .contact { padding: 64px var(--pad) 80px; }
         }
 
         @media (max-width: 540px) {
@@ -1107,7 +1122,7 @@
                     With experience across fintech, media, and global e-commerce platforms like Mercado Libre and AB InBev, I bring a research-first, technology-forward approach to every project.
                 </p>
                 <p class="about-text reveal">
-                    Currently available for new projects and collaborations — remote or on-site.
+                    Currently available for new projects and collaborations.
                 </p>
                 <div class="about-divider"></div>
                 <p class="skills-label reveal">Design Expertise</p>
