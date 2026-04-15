@@ -103,6 +103,9 @@
         gtag('config', 'G-TG6065EXF6');
     </script>
 
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/images/retrato.png" as="image">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -482,7 +485,6 @@
             width: max-content;
             -webkit-animation: marquee 30s linear infinite;
             animation: marquee 30s linear infinite;
-            will-change: transform;
         }
 
         .marquee-item {
@@ -1201,25 +1203,16 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // --- Custom cursor (desktop) ---
+        // --- Custom cursor (desktop only, no rAF loop) ---
         const cursor = document.getElementById('cursor');
-        if (matchMedia('(pointer: fine)').matches) {
-            let cx = -100, cy = -100, tx = -100, ty = -100;
-
+        if (matchMedia('(pointer: fine) and (min-width: 901px)').matches) {
             document.addEventListener('mousemove', (e) => {
-                tx = e.clientX; ty = e.clientY;
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
                 if (!cursor.classList.contains('visible')) cursor.classList.add('visible');
             });
 
             document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
-
-            (function loop() {
-                cx += (tx - cx) * 0.15;
-                cy += (ty - cy) * 0.15;
-                cursor.style.left = cx + 'px';
-                cursor.style.top = cy + 'px';
-                requestAnimationFrame(loop);
-            })();
 
             document.querySelectorAll('[data-cursor="hover"], a, button').forEach(el => {
                 el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
