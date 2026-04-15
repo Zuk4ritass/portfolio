@@ -278,6 +278,13 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .case-meta { grid-template-columns: 1fr 1fr; }
+            .case-image[style*="display: flex"] {
+                flex-wrap: wrap !important;
+            }
+            .case-image[style*="display: flex"] > div {
+                max-width: 100% !important;
+                flex: 1 1 100% !important;
+            }
         }
         @media (max-width: 480px) {
             .case-meta { grid-template-columns: 1fr; }
@@ -391,9 +398,15 @@
     </section>
 
     <!-- BEFORE / AFTER -->
-    <div class="case-image reveal">
-        <img src="assets/images/antes-vs-despues.png" alt="Side by side comparison: Android legacy flow with outdated UI vs. redesigned experience with modern design system">
-        <p class="case-image-caption">Legacy experience (left) vs. Redesigned flow (right) — same feature, completely different approach</p>
+    <div class="case-image reveal" style="display: flex; gap: 16px; align-items: flex-start; justify-content: center;">
+        <div style="flex: 1; max-width: 320px;">
+            <img src="assets/images/hub-100-legacy.png" alt="Legacy Android experience: cluttered pie chart with outdated Material Design" style="border-radius: 12px; border: 1px solid var(--border);">
+            <p class="case-image-caption" style="text-align: center; margin-top: 12px;">Before — Legacy Android</p>
+        </div>
+        <div style="flex: 1; max-width: 320px;">
+            <img src="assets/images/hub-100-new.png" alt="Redesigned experience: clean progress ring with modern design system" style="border-radius: 12px; border: 1px solid var(--border);">
+            <p class="case-image-caption" style="text-align: center; margin-top: 12px;">After — New design system</p>
+        </div>
     </div>
 
     <div class="case-divider"></div>
@@ -415,6 +428,15 @@
             I used Claude and Gemini to rapidly explore copy alternatives for sensitive moments in the flow — testing different tones for explaining what happens to your money, how to frame the "percentage distribution" concept, and what language feels reassuring vs. alarming. I also used AI image generation tools to create contextual imagery for the onboarding screens.
         </p>
 
+    </section>
+
+    <!-- ONBOARDING SCREEN -->
+    <div class="case-image reveal">
+        <img src="assets/images/onboarding.png" alt="Onboarding screen: warm sunset image with two people shaking hands, copy reads 'Tu patrimonio en las manos de los más cercanos'" style="max-width: 360px; margin: 0 auto; border-radius: 12px;">
+        <p class="case-image-caption">The emotional entry point — warm imagery and human language instead of legal disclaimers</p>
+    </div>
+
+    <section class="case-section reveal">
         <h3>3. Building the new structure</h3>
         <p>
             I broke the original monolithic form into three clear stages:
@@ -431,15 +453,26 @@
         </p>
     </section>
 
-    <!-- MOCKUP -->
-    <div class="case-image reveal">
-        <img src="assets/images/Frame-1000008489.png" alt="Redesigned empty state: progress ring at 0%, clear call to action to add first beneficiary" style="max-width: 520px; margin: 0 auto;">
-        <p class="case-image-caption">The empty state — 0% distributed. A progress ring motivates completion while the CTA is direct and reassuring.</p>
+    <!-- KEY SCREENS: Empty state → Form → Complete -->
+    <div class="case-image reveal" style="display: flex; gap: 16px; align-items: flex-start; justify-content: center;">
+        <div style="flex: 1; max-width: 280px;">
+            <img src="assets/images/empty-state.png" alt="Empty state: progress ring at 0%, call to action to add first beneficiary" style="border-radius: 12px; border: 1px solid var(--border);">
+            <p class="case-image-caption" style="text-align: center; margin-top: 12px;">1. Empty state — 0%</p>
+        </div>
+        <div style="flex: 1; max-width: 280px;">
+            <img src="assets/images/formulario.png" alt="Beneficiary form with progressive fields: name, date, address, percentage slider" style="border-radius: 12px; border: 1px solid var(--border);">
+            <p class="case-image-caption" style="text-align: center; margin-top: 12px;">2. Add beneficiary</p>
+        </div>
+        <div style="flex: 1; max-width: 280px;">
+            <img src="assets/images/hub-100-new.png" alt="Completed state: 100% distributed between two beneficiaries with summary" style="border-radius: 12px; border: 1px solid var(--border);">
+            <p class="case-image-caption" style="text-align: center; margin-top: 12px;">3. Complete — 100%</p>
+        </div>
     </div>
 
-    <!-- CASE STUDY COVER -->
+    <!-- FULL FLOW SHOWCASE -->
     <div class="case-image reveal" style="margin-top: 48px;">
-        <img src="assets/images/case-of-study-1.png" alt="Case study overview showing the phone mockup with the beneficiary flow on a dark background">
+        <img src="assets/images/thumb.jpg" alt="Complete flow showcase: 5 screens showing the full beneficiary journey from onboarding to completion" style="border-radius: 12px;">
+        <p class="case-image-caption">The complete flow — from onboarding to full distribution</p>
     </div>
 
     <div class="case-divider"></div>
