@@ -405,20 +405,20 @@
         }
 
         .hero-scroll {
-            display: flex; align-items: center; gap: 12px;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
             font-size: 11px; color: var(--text-soft);
             letter-spacing: 0.08em; text-transform: uppercase;
             flex-shrink: 0;
         }
 
-        .scroll-line {
-            width: 48px; height: 1px; background: var(--border);
+        .scroll-line-v {
+            width: 1px; height: 48px; background: var(--border);
             position: relative; overflow: hidden;
         }
-        .scroll-line::after {
+        .scroll-line-v::after {
             content: ''; position: absolute; inset: 0;
             background: var(--text-soft);
-            animation: slide 2.2s var(--ease-in-out) infinite 2s;
+            animation: slideDown 2.2s var(--ease-in-out) infinite 2s;
         }
 
         /* Hero portrait */
@@ -854,10 +854,10 @@
         @keyframes fadeUp {
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes slide {
-            0%   { transform: translateX(-100%); }
-            50%  { transform: translateX(0);     }
-            100% { transform: translateX(100%);  }
+        @keyframes slideDown {
+            0%   { transform: translateY(-100%); }
+            50%  { transform: translateY(0);     }
+            100% { transform: translateY(100%);  }
         }
 
         /* ==========================================
@@ -937,8 +937,8 @@
                     Crafting meaningful digital experiences through research-driven strategy, AI-augmented workflows, and thoughtful interaction design.
                 </p>
                 <div class="hero-scroll" aria-hidden="true">
-                    <div class="scroll-line"></div>
                     <span>Scroll</span>
+                    <div class="scroll-line-v"></div>
                 </div>
             </div>
         </div>
