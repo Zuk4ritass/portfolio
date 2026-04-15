@@ -426,16 +426,53 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .case-meta { grid-template-columns: 1fr 1fr; }
+
+            /* Stack side-by-side images */
             .case-image[style*="display: flex"] {
                 flex-wrap: wrap !important;
+                gap: 24px !important;
             }
             .case-image[style*="display: flex"] > div {
-                max-width: 100% !important;
-                flex: 1 1 100% !important;
+                max-width: 260px !important;
+                flex: 1 1 260px !important;
+                margin: 0 auto;
+            }
+
+            /* Onboarding image */
+            .case-image img[style*="max-width: 360px"] {
+                max-width: 260px !important;
+            }
+
+            /* Carousel mobile */
+            .carousel {
+                padding: 28px 16px;
+                border-radius: 14px;
+            }
+            .carousel-viewport {
+                min-height: 380px;
+            }
+            .carousel-slide img {
+                height: 300px;
+            }
+            .carousel-caption {
+                font-size: 13px;
+                max-width: 280px;
             }
         }
+
         @media (max-width: 480px) {
             .case-meta { grid-template-columns: 1fr; }
+
+            .case-image[style*="display: flex"] > div {
+                max-width: 220px !important;
+            }
+
+            .carousel-viewport {
+                min-height: 340px;
+            }
+            .carousel-slide img {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -471,7 +508,7 @@
 
     <!-- HERO IMAGE -->
     <div class="case-hero-image" style="margin-top: 64px;">
-        <img src="assets/images/thumb.jpg" alt="Complete beneficiary flow: 5 screens showing onboarding, form, and confirmation">
+        <img src="assets/images/thumb.jpg" alt="Complete beneficiary flow: 5 screens showing onboarding, form, and confirmation" width="1200" height="810" fetchpriority="high">
     </div>
 
     <!-- META -->
@@ -548,11 +585,11 @@
     <!-- BEFORE / AFTER -->
     <div class="case-image reveal" style="display: flex; gap: 16px; align-items: flex-start; justify-content: center;">
         <div style="flex: 1; max-width: 320px;">
-            <img src="assets/images/hub-100-legacy.png" alt="Legacy Android experience: cluttered pie chart with outdated Material Design" style="border-radius: 12px; border: 1px solid var(--border);">
+            <img src="assets/images/hub-100-legacy.png" alt="Legacy Android experience: cluttered pie chart with outdated Material Design" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="800">
             <p class="case-image-caption" style="text-align: center; margin-top: 12px;">Before — Legacy Android</p>
         </div>
         <div style="flex: 1; max-width: 320px;">
-            <img src="assets/images/hub-100-new.png" alt="Redesigned experience: clean progress ring with modern design system" style="border-radius: 12px; border: 1px solid var(--border);">
+            <img src="assets/images/hub-100-new.png" alt="Redesigned experience: clean progress ring with modern design system" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="800">
             <p class="case-image-caption" style="text-align: center; margin-top: 12px;">After — New design system</p>
         </div>
     </div>
@@ -580,7 +617,7 @@
 
     <!-- ONBOARDING SCREEN -->
     <div class="case-image reveal">
-        <img src="assets/images/onboarding.png" alt="Onboarding screen: warm sunset image with two people shaking hands, copy reads 'Tu patrimonio en las manos de los más cercanos'" style="max-width: 360px; margin: 0 auto; border-radius: 12px;">
+        <img src="assets/images/onboarding.jpg" alt="Onboarding screen: warm sunset image with two people shaking hands, copy reads 'Tu patrimonio en las manos de los más cercanos'" style="max-width: 360px; margin: 0 auto; border-radius: 12px;" loading="lazy" width="360" height="800">
         <p class="case-image-caption">The emotional entry point — warm imagery and human language instead of legal disclaimers</p>
     </div>
 
@@ -604,15 +641,15 @@
     <!-- KEY SCREENS: Empty state → Form → Complete -->
     <div class="case-image reveal" style="display: flex; gap: 16px; align-items: flex-start; justify-content: center;">
         <div style="flex: 1; max-width: 280px;">
-            <img src="assets/images/empty-state.png" alt="Empty state: progress ring at 0%, call to action to add first beneficiary" style="border-radius: 12px; border: 1px solid var(--border);">
+            <img src="assets/images/empty-state.png" alt="Empty state: progress ring at 0%, call to action to add first beneficiary" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="800">
             <p class="case-image-caption" style="text-align: center; margin-top: 12px;">1. Empty state — 0%</p>
         </div>
         <div style="flex: 1; max-width: 280px;">
-            <img src="assets/images/formulario.png" alt="Beneficiary form with progressive fields: name, date, address, percentage slider" style="border-radius: 12px; border: 1px solid var(--border);">
+            <img src="assets/images/formulario.png" alt="Beneficiary form with progressive fields: name, date, address, percentage slider" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="800">
             <p class="case-image-caption" style="text-align: center; margin-top: 12px;">2. Add beneficiary</p>
         </div>
         <div style="flex: 1; max-width: 280px;">
-            <img src="assets/images/hub-100-new.png" alt="Completed state: 100% distributed between two beneficiaries with summary" style="border-radius: 12px; border: 1px solid var(--border);">
+            <img src="assets/images/hub-100-new.png" alt="Completed state: 100% distributed between two beneficiaries with summary" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="800">
             <p class="case-image-caption" style="text-align: center; margin-top: 12px;">3. Complete — 100%</p>
         </div>
     </div>
@@ -631,7 +668,7 @@
 
             <div class="carousel-viewport">
                 <div class="carousel-slide active" data-index="0">
-                    <img src="assets/images/onboarding.png" alt="Onboarding: warm imagery with handshake at sunset">
+                    <img src="assets/images/onboarding.jpg" alt="Onboarding: warm imagery with handshake at sunset">
                     <div class="carousel-label">
                         <p class="carousel-step">Step 1 — Entry point</p>
                         <p class="carousel-caption">Warm, human imagery sets the emotional tone from the start.</p>
