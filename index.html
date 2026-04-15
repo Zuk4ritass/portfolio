@@ -657,9 +657,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 48px clamp(32px, 5vw, 64px);
-            background: var(--bg-card);
-            border-radius: 16px;
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .client-item {
@@ -671,14 +671,15 @@
             height: 28px;
             width: auto;
             object-fit: contain;
-            opacity: 0.5;
+            opacity: 0.4;
+            filter: invert(1);
             transition: opacity 0.3s var(--ease);
         }
-        .client-item:hover .client-logo { opacity: 0.9; }
+        .client-item:hover .client-logo { opacity: 0.7; }
 
         .client-name {
             font-size: 11px;
-            color: var(--text-soft);
+            color: var(--text-mid);
             letter-spacing: 0.06em;
         }
 
@@ -893,7 +894,7 @@
             .clients-strip {
                 flex-wrap: wrap; gap: 32px;
                 justify-content: center;
-                padding: 36px 28px;
+                padding: 36px 0;
             }
 
             .about { padding: 64px var(--pad); }
