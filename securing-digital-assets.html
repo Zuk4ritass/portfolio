@@ -85,10 +85,16 @@
         }
         .nav-back:hover { color: var(--text); }
 
+        /* LAYOUT WRAPPER */
+        .case-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 var(--pad);
+        }
+
         /* HERO */
         .case-hero {
-            padding: calc(var(--nav-h) + 64px) var(--pad) 0;
-            max-width: 900px;
+            padding-top: calc(var(--nav-h) + 64px);
         }
 
         .case-tags {
@@ -157,8 +163,7 @@
 
         /* CONTENT SECTIONS */
         .case-section {
-            max-width: 720px;
-            padding: 80px var(--pad);
+            padding: 80px 0;
         }
 
         .case-section h2 {
@@ -202,7 +207,6 @@
 
         /* FULL-WIDTH IMAGE */
         .case-image {
-            padding: 0 var(--pad);
             margin-bottom: 20px;
         }
         .case-image img {
@@ -217,8 +221,6 @@
 
         /* HIGHLIGHT BLOCK */
         .case-highlight {
-            max-width: 720px;
-            padding: 0 var(--pad);
             margin-bottom: 64px;
         }
         .case-highlight blockquote {
@@ -233,15 +235,13 @@
 
         /* DIVIDER */
         .case-divider {
-            max-width: 720px;
             height: 1px;
             background: var(--border);
-            margin: 0 var(--pad) 0;
         }
 
         /* NEXT PROJECT */
         .case-next {
-            padding: 80px var(--pad);
+            padding: 80px 0;
             border-top: 1px solid var(--border);
             text-align: center;
         }
@@ -277,7 +277,6 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .case-meta { grid-template-columns: 1fr 1fr; }
-            .case-section, .case-highlight { padding-left: var(--pad); padding-right: var(--pad); }
         }
         @media (max-width: 480px) {
             .case-meta { grid-template-columns: 1fr; }
@@ -297,6 +296,9 @@
         </a>
     </nav>
 
+    <!-- MAIN CONTENT -->
+    <div class="case-wrap">
+
     <!-- HERO -->
     <section class="case-hero">
         <div class="case-tags">
@@ -312,29 +314,27 @@
     </section>
 
     <!-- HERO IMAGE -->
-    <div class="case-hero-image" style="padding: 0 var(--pad); margin-top: 64px;">
+    <div class="case-hero-image" style="margin-top: 64px;">
         <img src="assets/images/thumb.png" alt="Complete flow showcase showing 5 screens of the beneficiary experience">
     </div>
 
     <!-- META -->
-    <div style="padding: 0 var(--pad);">
-        <div class="case-meta">
-            <div class="meta-item">
-                <p class="meta-label">Role</p>
-                <p class="meta-value">UX Designer</p>
-            </div>
-            <div class="meta-item">
-                <p class="meta-label">Duration</p>
-                <p class="meta-value">3 months</p>
-            </div>
-            <div class="meta-item">
-                <p class="meta-label">Team</p>
-                <p class="meta-value">Product, Dev, Legal</p>
-            </div>
-            <div class="meta-item">
-                <p class="meta-label">Tools</p>
-                <p class="meta-value">Figma, Maze, Miro</p>
-            </div>
+    <div class="case-meta">
+        <div class="meta-item">
+            <p class="meta-label">Role</p>
+            <p class="meta-value">UX Designer</p>
+        </div>
+        <div class="meta-item">
+            <p class="meta-label">Duration</p>
+            <p class="meta-value">3 months</p>
+        </div>
+        <div class="meta-item">
+            <p class="meta-label">Team</p>
+            <p class="meta-value">Product, Dev, Legal</p>
+        </div>
+        <div class="meta-item">
+            <p class="meta-label">Tools</p>
+            <p class="meta-value">Figma, Maze, Miro</p>
         </div>
     </div>
 
@@ -446,6 +446,8 @@
         <p class="case-next-label">Thanks for reading</p>
         <a href="/">Back to all projects</a>
     </section>
+
+    </div><!-- /.case-wrap -->
 
     <!-- FOOTER -->
     <footer>
