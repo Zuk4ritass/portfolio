@@ -275,6 +275,33 @@
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
+        /* HORIZONTAL SCROLL FLOW */
+        .case-flow-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            margin: 0 calc(var(--pad) * -1);
+            padding: 0 var(--pad) 16px;
+            cursor: grab;
+        }
+        .case-flow-scroll:active { cursor: grabbing; }
+        .case-flow-scroll img {
+            height: clamp(400px, 50vw, 600px);
+            width: auto;
+            max-width: none;
+            border-radius: 12px;
+        }
+        .case-flow-scroll::-webkit-scrollbar { height: 4px; }
+        .case-flow-scroll::-webkit-scrollbar-track { background: var(--border); border-radius: 4px; }
+        .case-flow-scroll::-webkit-scrollbar-thumb { background: var(--text-soft); border-radius: 4px; }
+
+        .scroll-hint {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; color: var(--text-soft);
+            letter-spacing: 0.06em;
+            margin-top: 12px;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .case-meta { grid-template-columns: 1fr 1fr; }
@@ -469,10 +496,15 @@
         </div>
     </div>
 
-    <!-- FULL FLOW SHOWCASE -->
-    <div class="case-image reveal" style="margin-top: 48px;">
-        <img src="assets/images/thumb.jpg" alt="Complete flow showcase: 5 screens showing the full beneficiary journey from onboarding to completion" style="border-radius: 12px;">
-        <p class="case-image-caption">The complete flow — from onboarding to full distribution</p>
+    <!-- FULL FLOW — HORIZONTAL SCROLL -->
+    <div class="reveal" style="margin-top: 48px;">
+        <div class="case-flow-scroll">
+            <img src="assets/images/full-flow.jpg" alt="Complete beneficiary flow: 20+ screens from entry point through onboarding, form, percentage assignment, to 100% distribution">
+        </div>
+        <p class="scroll-hint">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Scroll to explore the full flow
+        </p>
     </div>
 
     <div class="case-divider"></div>
