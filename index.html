@@ -498,12 +498,10 @@
         .clients-strip {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: clamp(40px, 6vw, 80px);
-            padding: 48px 40px;
+            justify-content: space-between;
+            padding: 48px clamp(32px, 5vw, 64px);
             background: var(--bg-card);
             border-radius: 16px;
-            flex-wrap: wrap;
         }
 
         .client-item {
@@ -724,7 +722,11 @@
             .featured-card { grid-template-columns: 1fr; }
             .featured-image { aspect-ratio: 16/10; }
 
-            .clients-strip { gap: 32px; padding: 36px 28px; }
+            .clients-strip {
+                flex-wrap: wrap; gap: 32px;
+                justify-content: center;
+                padding: 36px 28px;
+            }
 
             .about-inner { grid-template-columns: 1fr; }
             .about-photo-wrap { position: static; }
@@ -830,7 +832,7 @@
                         A research-driven approach to digital estate planning. Designed the end-to-end beneficiary flow for a fintech platform — from onboarding to asset distribution.
                     </p>
                 </div>
-                <a href="#" class="featured-cta">
+                <a href="securing-digital-assets.html" class="featured-cta">
                     View Case Study
                     <svg class="arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                         <path d="M1 12L12 1M12 1H4M12 1V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>

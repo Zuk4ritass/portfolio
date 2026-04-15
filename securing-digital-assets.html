@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Securing Digital Assets Post-Life — Manuel Acero</title>
+    <meta name="description" content="UX case study: Designing the end-to-end beneficiary flow for a fintech platform — digital estate planning from onboarding to asset distribution.">
+    <link rel="canonical" href="https://manuelacero.com/securing-digital-assets.html">
+
+    <meta property="og:title" content="Securing Digital Assets Post-Life — Case Study">
+    <meta property="og:description" content="A research-driven UX strategy for digital estate planning in fintech.">
+    <meta property="og:image" content="https://manuelacero.com/assets/images/thumb.png">
+    <meta property="og:url" content="https://manuelacero.com/securing-digital-assets.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#111111">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>M</text></svg>">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Securing Digital Assets Post-Life",
+        "author": { "@type": "Person", "name": "Manuel Acero" },
+        "description": "UX case study on designing the end-to-end beneficiary flow for a fintech platform.",
+        "image": "https://manuelacero.com/assets/images/thumb.png"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #F5F4F0;
+            --bg-dark:      #111111;
+            --text:         #111111;
+            --text-mid:     #555555;
+            --text-soft:    #999999;
+            --text-inv:     #F5F4F0;
+            --border:       #DDDCD7;
+            --accent:       #4F46E5;
+            --white:        #FFFFFF;
+            --serif:        'Instrument Serif', Georgia, serif;
+            --sans:         'DM Sans', -apple-system, sans-serif;
+            --pad:          clamp(20px, 5vw, 80px);
+            --nav-h:        64px;
+            --ease:         cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg); color: var(--text);
+            font-family: var(--sans); font-size: 16px; line-height: 1.6;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
+        }
+        img { display: block; max-width: 100%; height: auto; }
+        a { color: inherit; text-decoration: none; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            height: var(--nav-h);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 var(--pad); z-index: 200;
+            background: rgba(245, 244, 240, 0.88);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo { font-family: var(--serif); font-size: 18px; letter-spacing: -0.02em; }
+        .nav-back {
+            font-size: 13px; color: var(--text-soft);
+            display: flex; align-items: center; gap: 8px;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        /* HERO */
+        .case-hero {
+            padding: calc(var(--nav-h) + 64px) var(--pad) 0;
+            max-width: 900px;
+        }
+
+        .case-tags {
+            display: flex; gap: 8px; flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .case-tag {
+            font-size: 10px; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--text-soft);
+            padding: 5px 14px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+        }
+
+        .case-title {
+            font-family: var(--serif);
+            font-size: clamp(44px, 7vw, 88px);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 28px;
+        }
+
+        .case-subtitle {
+            font-size: clamp(17px, 2vw, 21px);
+            font-weight: 300; color: var(--text-mid);
+            line-height: 1.7; max-width: 640px;
+        }
+
+        /* HERO IMAGE */
+        .case-hero-image {
+            margin-top: 64px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .case-hero-image img {
+            width: 100%;
+        }
+
+        /* META */
+        .case-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            margin-top: 64px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .meta-item {
+            background: var(--bg);
+            padding: 28px 0;
+            padding-right: 24px;
+        }
+        .meta-item:first-child { padding-left: 0; }
+        .meta-label {
+            font-size: 10px; font-weight: 500;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 6px;
+        }
+        .meta-value {
+            font-size: 15px; font-weight: 400;
+            color: var(--text);
+        }
+
+        /* CONTENT SECTIONS */
+        .case-section {
+            max-width: 720px;
+            padding: 80px var(--pad);
+        }
+
+        .case-section h2 {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 28px;
+        }
+        .case-section h2 em { font-style: italic; }
+
+        .case-section h3 {
+            font-size: 18px; font-weight: 500;
+            margin-top: 40px; margin-bottom: 12px;
+        }
+
+        .case-section p {
+            font-size: 17px; line-height: 1.85;
+            color: var(--text-mid);
+            margin-bottom: 20px;
+        }
+
+        .case-section ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        .case-section ul li {
+            font-size: 17px; line-height: 1.85;
+            color: var(--text-mid);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .case-section ul li::before {
+            content: '';
+            position: absolute; left: 0; top: 12px;
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* FULL-WIDTH IMAGE */
+        .case-image {
+            padding: 0 var(--pad);
+            margin-bottom: 20px;
+        }
+        .case-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+        .case-image-caption {
+            font-size: 13px; color: var(--text-soft);
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        /* HIGHLIGHT BLOCK */
+        .case-highlight {
+            max-width: 720px;
+            padding: 0 var(--pad);
+            margin-bottom: 64px;
+        }
+        .case-highlight blockquote {
+            font-family: var(--serif);
+            font-size: clamp(24px, 3vw, 36px);
+            line-height: 1.4;
+            font-style: italic;
+            color: var(--text);
+            border-left: 3px solid var(--accent);
+            padding-left: 28px;
+        }
+
+        /* DIVIDER */
+        .case-divider {
+            max-width: 720px;
+            height: 1px;
+            background: var(--border);
+            margin: 0 var(--pad) 0;
+        }
+
+        /* NEXT PROJECT */
+        .case-next {
+            padding: 80px var(--pad);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .case-next-label {
+            font-size: 11px; font-weight: 500;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 20px;
+        }
+        .case-next a {
+            font-family: var(--serif);
+            font-size: clamp(32px, 5vw, 56px);
+            letter-spacing: -0.02em;
+            transition: color 0.2s;
+        }
+        .case-next a:hover { color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            padding: 24px var(--pad);
+            border-top: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        footer span { font-size: 12px; color: var(--text-soft); }
+
+        /* REVEAL */
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .case-meta { grid-template-columns: 1fr 1fr; }
+            .case-section, .case-highlight { padding-left: var(--pad); padding-right: var(--pad); }
+        }
+        @media (max-width: 480px) {
+            .case-meta { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="/" class="nav-logo">Manuel Acero</a>
+        <a href="/" class="nav-back">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to portfolio
+        </a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="case-hero">
+        <div class="case-tags">
+            <span class="case-tag">UX Strategy</span>
+            <span class="case-tag">Fintech</span>
+            <span class="case-tag">User Research</span>
+            <span class="case-tag">2023</span>
+        </div>
+        <h1 class="case-title">Securing Digital Assets Post-Life</h1>
+        <p class="case-subtitle">
+            Designing the end-to-end beneficiary flow for a fintech platform — enabling users to plan and distribute their digital assets in case of death.
+        </p>
+    </section>
+
+    <!-- HERO IMAGE -->
+    <div class="case-hero-image" style="padding: 0 var(--pad); margin-top: 64px;">
+        <img src="assets/images/thumb.png" alt="Complete flow showcase showing 5 screens of the beneficiary experience">
+    </div>
+
+    <!-- META -->
+    <div style="padding: 0 var(--pad);">
+        <div class="case-meta">
+            <div class="meta-item">
+                <p class="meta-label">Role</p>
+                <p class="meta-value">UX Designer</p>
+            </div>
+            <div class="meta-item">
+                <p class="meta-label">Duration</p>
+                <p class="meta-value">3 months</p>
+            </div>
+            <div class="meta-item">
+                <p class="meta-label">Team</p>
+                <p class="meta-value">Product, Dev, Legal</p>
+            </div>
+            <div class="meta-item">
+                <p class="meta-label">Tools</p>
+                <p class="meta-value">Figma, Maze, Miro</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="case-section reveal">
+        <h2>The <em>challenge</em></h2>
+        <p>
+            Users of the platform had no way to plan what happens to their digital financial assets after they pass away. Existing solutions were either overly legal, complex, or simply nonexistent in the fintech space.
+        </p>
+        <p>
+            The challenge was to create a flow that handles an emotionally sensitive topic — death and money — with clarity, empathy, and simplicity. Users needed to assign beneficiaries and distribute percentages of their account, all within a mobile-first experience.
+        </p>
+    </section>
+
+    <!-- HIGHLIGHT -->
+    <div class="case-highlight reveal">
+        <blockquote>
+            How might we help users plan the distribution of their digital assets in a way that feels simple, safe, and human?
+        </blockquote>
+    </div>
+
+    <div class="case-divider"></div>
+
+    <!-- RESEARCH -->
+    <section class="case-section reveal">
+        <h2>Discovery &amp; <em>research</em></h2>
+        <p>
+            I started with desk research on digital estate planning regulations in Latin America, followed by qualitative interviews with 12 potential users to understand their mental models around financial planning post-life.
+        </p>
+
+        <h3>Key insights</h3>
+        <ul>
+            <li>Most users had never thought about what happens to their fintech accounts after death</li>
+            <li>The concept of "beneficiaries" was familiar from traditional banking but felt intimidating</li>
+            <li>Users wanted a quick setup process — not a lengthy legal procedure</li>
+            <li>Transparency about what data is shared with beneficiaries was critical for trust</li>
+        </ul>
+    </section>
+
+    <!-- BEFORE / AFTER -->
+    <div class="case-image reveal">
+        <img src="assets/images/antes-vs-despues.png" alt="Before and after comparison: Android legacy flow vs. redesigned iOS experience">
+        <p class="case-image-caption">Before (Android legacy) vs. After (redesigned experience)</p>
+    </div>
+
+    <!-- DESIGN -->
+    <section class="case-section reveal">
+        <h2>Design <em>process</em></h2>
+        <p>
+            Working closely with the product and legal teams, I mapped the end-to-end flow from entry point to confirmation. The design process went through several iterations:
+        </p>
+
+        <h3>1. Information Architecture</h3>
+        <p>
+            I restructured the flow into three clear steps: onboarding (explaining the concept), adding beneficiaries (personal data + percentage), and confirmation (review and submit). This reduced the cognitive load significantly compared to the original linear form.
+        </p>
+
+        <h3>2. Emotional Design</h3>
+        <p>
+            The entry point uses warm, human imagery and reassuring copy ("Tu patrimonio en las manos de los más cercanos") instead of cold financial language. Empty states show progress indicators to motivate completion.
+        </p>
+
+        <h3>3. Progressive Disclosure</h3>
+        <p>
+            Instead of showing all required fields at once, the form reveals information progressively. Users first see only the essential fields (name, relationship), with additional details appearing contextually.
+        </p>
+    </section>
+
+    <!-- MOCKUP -->
+    <div class="case-image reveal">
+        <img src="assets/images/Frame-1000008489.png" alt="Final UI design: beneficiary dashboard showing 0% distribution with call to action" style="max-width: 520px; margin: 0 auto;">
+        <p class="case-image-caption">Empty state — zero beneficiaries with clear call to action</p>
+    </div>
+
+    <!-- CASE STUDY COVER -->
+    <div class="case-image reveal" style="margin-top: 48px;">
+        <img src="assets/images/case-of-study-1.png" alt="Case study cover with phone mockup on dark background">
+    </div>
+
+    <div class="case-divider"></div>
+
+    <!-- RESULTS -->
+    <section class="case-section reveal">
+        <h2>Results &amp; <em>impact</em></h2>
+        <p>
+            The redesigned beneficiary flow was shipped to production on both Android and iOS. Key outcomes:
+        </p>
+        <ul>
+            <li>Reduced the setup flow from 8 steps to 3 clear stages</li>
+            <li>Usability testing showed a task completion rate of 92% (up from 64%)</li>
+            <li>Average setup time decreased from 4+ minutes to under 2 minutes</li>
+            <li>Positive qualitative feedback on the emotional tone and clarity</li>
+        </ul>
+    </section>
+
+    <!-- LEARNINGS -->
+    <section class="case-section reveal">
+        <h2>Key <em>learnings</em></h2>
+        <p>
+            Designing for sensitive topics requires more than good UI — it demands empathy in every micro-decision, from copy to color to timing. Working with legal constraints taught me to find creative solutions within rigid frameworks.
+        </p>
+        <p>
+            This project reinforced my belief that the best UX work happens when you deeply understand the emotional context of the user, not just their task flow.
+        </p>
+    </section>
+
+    <!-- NEXT -->
+    <section class="case-next">
+        <p class="case-next-label">Thanks for reading</p>
+        <a href="/">Back to all projects</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>&copy; 2025 Manuel Acero</span>
+        <span>Bogotá, Colombia</span>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
