@@ -762,30 +762,19 @@
             const counter = document.getElementById('carouselCurrent');
             const total = slides.length;
             let current = 0;
-            let direction = 1; // 1 = forward, -1 = backward
 
             function goTo(index) {
                 if (index < 0 || index >= total || index === current) return;
-                direction = index > current ? 1 : -1;
 
-                // Exit current
-                slides[current].classList.remove('active');
-                slides[current].classList.add(direction === 1 ? 'exit-left' : '');
-                setTimeout(() => {
-                    slides[current === index ? current : (current + total) % total];
-                    slides.forEach(s => s.classList.remove('exit-left'));
-                }, 450);
-
-                // Enter new
-                const prev = current;
-                current = index;
-                slides[current].style.transform = direction === 1 ? 'translateX(40px)' : 'translateX(-40px)';
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        slides[current].classList.add('active');
-                        slides[current].style.transform = '';
-                    });
+                // Hide all slides
+                slides.forEach(s => {
+                    s.classList.remove('active');
+                    s.style.transform = '';
                 });
+
+                // Show new slide
+                current = index;
+                slides[current].classList.add('active');
 
                 // Update dots
                 dots.forEach(d => d.classList.remove('active'));
