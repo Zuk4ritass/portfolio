@@ -150,6 +150,58 @@
         .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad); }
 
         /* ==========================================
+           NN/g HEURISTICS: Accessibility & UX
+        ========================================== */
+        /* Skip to content (H1: Visibility of system status) */
+        .skip-link {
+            position: absolute;
+            top: -100%; left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            background: var(--text);
+            color: var(--bg);
+            font-size: 14px; font-weight: 500;
+            border-radius: 0 0 8px 8px;
+            z-index: 9999;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* H4: Consistency — Focus states for keyboard nav */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* H6: Recognition — Active nav state */
+        .nav-menu a[aria-current="true"] {
+            color: var(--text);
+        }
+        .nav-menu a[aria-current="true"]::after {
+            width: 100%;
+        }
+
+        /* H7: Flexibility — Reduced motion for vestibular disorders */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .marquee-track { animation: none; }
+            .loader { display: none; }
+            .reveal { opacity: 1; transform: none; }
+        }
+
+        /* H8: Aesthetic & minimalist — Ensure proper reading measure */
+        .hero-bio, .about-text, .featured-desc {
+            max-width: 65ch;
+        }
+
+        /* ==========================================
            LOADER
         ========================================== */
         .loader {
@@ -371,15 +423,28 @@
 
         /* Hero portrait */
         .hero-portrait {
-            width: clamp(200px, 22vw, 340px);
+            width: clamp(300px, 38vw, 520px);
             align-self: end;
+            position: relative;
             opacity: 0;
             animation: fadeUp 0.9s var(--ease) 1.6s forwards;
             z-index: 2;
         }
+        .hero-portrait::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 85%; height: 90%;
+            background: linear-gradient(135deg, #E8E6E0 0%, #D4D2CC 100%);
+            border-radius: 300px 300px 0 0;
+            z-index: -1;
+        }
         .hero-portrait img {
             width: 100%;
-            filter: grayscale(1) contrast(1.08);
+            filter: grayscale(1) contrast(1.1);
+            position: relative;
+            z-index: 1;
         }
 
         /* ==========================================
@@ -584,7 +649,22 @@
             aspect-ratio: 3/4;
             object-fit: cover;
             object-position: top center;
-            filter: grayscale(1) contrast(1.05);
+            filter: grayscale(1) contrast(1.08);
+            border-radius: 4px;
+        }
+
+        .about-photo-wrap::after {
+            content: '';
+            display: block;
+            margin-top: 20px;
+            padding: 16px 20px;
+            font-size: 13px;
+            color: var(--text-soft);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            text-align: center;
+            content: 'Available for remote & on-site work';
+            letter-spacing: 0.03em;
         }
 
         .about-caption {
@@ -748,8 +828,9 @@
             .hero-portrait {
                 position: absolute;
                 right: var(--pad); bottom: 64px;
-                width: 180px; opacity: 0.15;
+                width: 220px; opacity: 0.2;
             }
+            .hero-portrait::before { display: none; }
             .hero-portrait img { filter: grayscale(1) contrast(1.1); }
             .hero-bottom { flex-direction: column; align-items: flex-start; }
             .hero-scroll { display: none; }
@@ -776,8 +857,11 @@
 </head>
 <body>
 
+    <!-- NN/g H1: Skip link for keyboard navigation -->
+    <a href="#work" class="skip-link">Skip to main content</a>
+
     <!-- ========== CURSOR ========== -->
-    <div class="cursor" id="cursor"></div>
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
 
     <!-- ========== LOADER ========== -->
     <div class="loader" id="loader">
@@ -792,8 +876,8 @@
     </div>
 
     <!-- ========== NAV ========== -->
-    <nav class="nav" id="nav">
-        <a href="#" class="nav-logo">Manuel Acero</a>
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <a href="#" class="nav-logo" aria-label="Manuel Acero — Home">Manuel Acero</a>
         <ul class="nav-menu">
             <li><a href="#work">Work</a></li>
             <li><a href="#about">About</a></li>
@@ -811,7 +895,7 @@
             <h1 class="hero-name">Manuel<br><em>Acero</em></h1>
             <div class="hero-bottom">
                 <p class="hero-bio">
-                    Crafting meaningful digital experiences at the intersection of user needs, business goals, and thoughtful interaction design.
+                    Crafting meaningful digital experiences through research-driven strategy, AI-augmented workflows, and thoughtful interaction design.
                 </p>
                 <div class="hero-scroll" aria-hidden="true">
                     <div class="scroll-line"></div>
@@ -828,28 +912,29 @@
     <div class="marquee" aria-hidden="true">
         <div class="marquee-track">
             <span class="marquee-item"><span class="marquee-dot"></span>UX Research</span>
+            <span class="marquee-item"><span class="marquee-dot"></span>AI-Augmented Design</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Product Strategy</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Interaction Design</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Design Systems</span>
+            <span class="marquee-item"><span class="marquee-dot"></span>Rapid Prototyping</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Usability Testing</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Information Architecture</span>
-            <span class="marquee-item"><span class="marquee-dot"></span>Prototyping</span>
-            <span class="marquee-item"><span class="marquee-dot"></span>User Flows</span>
             <!-- Duplicate for seamless loop -->
             <span class="marquee-item"><span class="marquee-dot"></span>UX Research</span>
+            <span class="marquee-item"><span class="marquee-dot"></span>AI-Augmented Design</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Product Strategy</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Interaction Design</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Design Systems</span>
+            <span class="marquee-item"><span class="marquee-dot"></span>Rapid Prototyping</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Usability Testing</span>
             <span class="marquee-item"><span class="marquee-dot"></span>Information Architecture</span>
-            <span class="marquee-item"><span class="marquee-dot"></span>Prototyping</span>
-            <span class="marquee-item"><span class="marquee-dot"></span>User Flows</span>
         </div>
     </div>
 
     <!-- ========== FEATURED PROJECT ========== -->
-    <section class="featured" id="work">
-        <p class="featured-label reveal">Featured Project</p>
+    <main>
+    <section class="featured" id="work" aria-labelledby="work-title">
+        <h2 class="featured-label reveal" id="work-title">Featured Project</h2>
 
         <article class="featured-card reveal reveal-d1" data-cursor="hover">
             <div class="featured-image">
@@ -864,7 +949,7 @@
                     </div>
                     <h2 class="featured-title">Securing Digital<br>Assets Post-Life</h2>
                     <p class="featured-desc">
-                        A research-driven approach to digital estate planning. Designed the end-to-end beneficiary flow for a fintech platform — from onboarding to asset distribution.
+                        A research-driven approach to digital estate planning. Designed the end-to-end beneficiary flow using AI-assisted research synthesis and rapid prototyping — from discovery to production.
                     </p>
                 </div>
                 <a href="securing-digital-assets.html" class="featured-cta">
@@ -901,37 +986,48 @@
     </section>
 
     <!-- ========== ABOUT ========== -->
-    <section class="about" id="about">
+    <section class="about" id="about" aria-labelledby="about-title">
         <div class="about-inner">
             <div class="about-photo-wrap">
                 <img src="assets/images/retrato.png" alt="Manuel Acero" class="about-photo">
-                <p class="about-caption">Bogotá, Colombia</p>
+                        <p class="about-caption">Bogotá, Colombia</p>
             </div>
             <div class="about-content">
-                <p class="about-eyebrow reveal">About</p>
+                <p class="about-eyebrow reveal" id="about-title">About</p>
                 <h2 class="about-heading reveal">
-                    Designing with<br><em>purpose</em> &amp;<br>precision.
+                    Human-centered<br>design, <em>amplified</em><br>by AI.
                 </h2>
                 <p class="about-text reveal">
-                    I'm Manuel Acero, a UX and Product Designer with a passion for creating intuitive, human-centered digital experiences. I specialize in bridging the gap between complex systems and the people who use them.
+                    I'm Manuel Acero, a UX and Product Designer who combines deep user research with AI-augmented workflows to deliver faster, more informed design decisions. I specialize in turning complex systems into intuitive experiences.
                 </p>
                 <p class="about-text reveal">
-                    With experience across fintech, media, and consumer platforms, I bring a research-first approach to every project — from early discovery and ideation to final interaction details.
+                    I leverage AI tools throughout my design process — from synthetic research analysis and rapid ideation to content generation and usability prediction — while keeping human judgment and empathy at the center of every decision.
                 </p>
                 <p class="about-text reveal">
-                    Currently available for new projects and collaborations.
+                    With experience across fintech, media, and global e-commerce platforms like Mercado Libre and AB InBev, I bring a research-first, technology-forward approach to every project.
+                </p>
+                <p class="about-text reveal">
+                    Currently available for new projects and collaborations — remote or on-site.
                 </p>
                 <div class="about-divider"></div>
-                <p class="skills-label reveal">Expertise</p>
+                <p class="skills-label reveal">Design Expertise</p>
                 <div class="skills reveal">
                     <span class="skill">UX Research</span>
                     <span class="skill">Product Strategy</span>
                     <span class="skill">Interaction Design</span>
                     <span class="skill">Design Systems</span>
+                    <span class="skill">Information Architecture</span>
+                    <span class="skill">Usability Testing</span>
+                </div>
+                <p class="skills-label reveal" style="margin-top: 28px;">Tools & AI</p>
+                <div class="skills reveal">
                     <span class="skill">Figma</span>
                     <span class="skill">Prototyping</span>
-                    <span class="skill">Usability Testing</span>
-                    <span class="skill">Information Architecture</span>
+                    <span class="skill">Claude / ChatGPT</span>
+                    <span class="skill">AI-Assisted Research</span>
+                    <span class="skill">Midjourney</span>
+                    <span class="skill">Miro</span>
+                    <span class="skill">Maze</span>
                 </div>
             </div>
         </div>
@@ -952,8 +1048,10 @@
         </div>
     </section>
 
+    </main>
+
     <!-- ========== FOOTER ========== -->
-    <footer>
+    <footer role="contentinfo">
         <span>&copy; 2025 Manuel Acero</span>
         <span>Bogotá, Colombia</span>
     </footer>
