@@ -298,7 +298,9 @@
             pointer-events: none;
         }
         .carousel-slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
-        .carousel-slide.exit-left { opacity: 0; transform: translateX(-40px); }
+        .carousel-slide.exit-left  { opacity: 0; transform: translateX(-40px); }
+        .carousel-slide.exit-right { opacity: 0; transform: translateX(40px); }
+        .carousel-slide.from-left  { transform: translateX(-40px); }
         .carousel-slide img {
             height: clamp(320px, 45vw, 500px); width: auto; max-width: 100%;
             border-radius: 16px; border: 1px solid var(--border);
@@ -646,12 +648,29 @@
 
             function goTo(index) {
                 if (index < 0 || index >= total || index === current) return;
-                slides[current].classList.remove('active');
-                slides[current].classList.add(index > current ? 'exit-left' : '');
-                dots[current].classList.remove('active');
-                setTimeout(() => slides[current < index ? current : index].classList.remove('exit-left'), 450);
+                const prev = current;
+                const forward = index > prev;
                 current = index;
-                slides[current].classList.add('active');
+
+                // Exit old slide in the correct direction
+                slides[prev].classList.remove('active');
+                slides[prev].classList.add(forward ? 'exit-left' : 'exit-right');
+                dots[prev].classList.remove('active');
+
+                // Position new slide off-screen in the correct direction before animating in
+                if (!forward) slides[current].classList.add('from-left');
+
+                // Double rAF forces browser to paint the initial position before transition
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    slides[current].classList.remove('from-left');
+                    slides[current].classList.add('active');
+                }));
+
+                // Clean up exit classes after transition ends
+                setTimeout(() => {
+                    slides[prev].classList.remove('exit-left', 'exit-right');
+                }, 450);
+
                 dots[current].classList.add('active');
                 if (counter) counter.textContent = current + 1;
                 prevBtn.disabled = current === 0;
