@@ -230,20 +230,50 @@
             letter-spacing: 0.04em;
         }
 
-        /* BENCHMARKING TABLE */
-        .bench-grid {
+        /* BENCHMARKING VISUAL */
+        .bench-visual { margin: 40px 0; }
+        .bench-platform-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin: 32px 0;
+            gap: 32px;
+            margin-bottom: 32px;
         }
-        .bench-card {
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 24px 20px;
+        .bench-platform-row.two-col { grid-template-columns: repeat(2, 1fr); max-width: 66%; }
+        .bench-platform-card { display: flex; flex-direction: column; gap: 12px; }
+        .bench-platform-screens {
+            display: flex; gap: 8px; align-items: flex-start;
+            background: var(--surface); border-radius: 14px;
+            padding: 16px; border: 1px solid var(--border);
+            min-height: 220px; overflow: hidden;
         }
-        .bench-app { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
-        .bench-insight { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+        .bench-platform-screens img {
+            flex: 1; width: 0; min-width: 0;
+            border-radius: 8px; object-fit: cover;
+            object-position: top;
+        }
+        .bench-platform-screens.single img { max-width: 140px; flex: none; margin: 0 auto; }
+        .bench-name {
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--text);
+        }
+        .bench-text { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+
+        /* BENCHMARK CONCLUSION */
+        .bench-conclusion {
+            margin-top: 48px; padding: 40px 48px;
+            background: var(--text); border-radius: 16px;
+        }
+        .bench-conclusion-label {
+            font-size: 11px; font-weight: 500;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: rgba(255,255,255,0.45); margin-bottom: 16px;
+        }
+        .bench-conclusion blockquote {
+            font-family: var(--serif); font-style: italic;
+            font-size: clamp(18px, 2.2vw, 24px);
+            line-height: 1.55; color: var(--bg); margin: 0;
+        }
 
         /* DIVIDER */
         .case-divider { height: 1px; background: var(--border); }
@@ -344,7 +374,9 @@
         @media (max-width: 768px) {
             .case-meta { grid-template-columns: 1fr 1fr; }
             .quotes-grid { grid-template-columns: 1fr; }
-            .bench-grid { grid-template-columns: 1fr; }
+            .bench-platform-row { grid-template-columns: 1fr; }
+            .bench-platform-row.two-col { grid-template-columns: 1fr; max-width: 100%; }
+            .bench-conclusion { padding: 28px 24px; }
             .phones-grid { gap: 12px; }
             .phone-item { max-width: 160px; }
         }
@@ -477,30 +509,52 @@
             Before sketching anything, I analyzed how the strongest streaming and social apps handle recommendations. Each platform does something worth borrowing.
         </p>
 
-        <div class="bench-grid">
-            <div class="bench-card">
-                <p class="bench-app">Letterboxd</p>
-                <p class="bench-insight">Built entirely around social trust. Friends' reviews surface first, making discovery feel personal rather than algorithmic.</p>
+        <div class="bench-visual">
+            <div class="bench-platform-row">
+                <div class="bench-platform-card">
+                    <div class="bench-platform-screens">
+                        <img src="assets/images/bench-spotify-1.jpg" alt="Spotify friend activity screen">
+                        <img src="assets/images/bench-spotify-2.jpg" alt="Spotify collaborative playlist">
+                    </div>
+                    <p class="bench-name">Spotify</p>
+                    <p class="bench-text">Friend activity in the sidebar and collaborative playlists show how social layers can be integrated without disrupting the core experience.</p>
+                </div>
+                <div class="bench-platform-card">
+                    <div class="bench-platform-screens single">
+                        <img src="assets/images/bench-letterboxd.jpg" alt="Letterboxd friends reviews">
+                    </div>
+                    <p class="bench-name">Letterboxd</p>
+                    <p class="bench-text">Built entirely around social trust. Friends' reviews surface first, making discovery feel personal rather than algorithmic.</p>
+                </div>
+                <div class="bench-platform-card">
+                    <div class="bench-platform-screens">
+                        <img src="assets/images/bench-netflix-1.jpg" alt="Netflix Top 10 section">
+                        <img src="assets/images/bench-netflix-2.jpg" alt="Netflix recommendations">
+                    </div>
+                    <p class="bench-name">Netflix</p>
+                    <p class="bench-text">The "Top 10 in your country" proved that social proof drives clicks even with strangers. With trusted contacts it would be far more effective.</p>
+                </div>
             </div>
-            <div class="bench-card">
-                <p class="bench-app">Spotify</p>
-                <p class="bench-insight">Friend activity in the sidebar and collaborative playlists show how social layers can be integrated without disrupting the core experience.</p>
+            <div class="bench-platform-row two-col">
+                <div class="bench-platform-card">
+                    <div class="bench-platform-screens single">
+                        <img src="assets/images/bench-hbomax.jpg" alt="HBO Max watchlist sharing">
+                    </div>
+                    <p class="bench-name">HBO Max</p>
+                    <p class="bench-text">Clean content categorization and watchlist sharing. A reference for information architecture in streaming.</p>
+                </div>
+                <div class="bench-platform-card">
+                    <div class="bench-platform-screens single">
+                        <img src="assets/images/bench-whatsapp.jpg" alt="WhatsApp group sharing">
+                    </div>
+                    <p class="bench-name">WhatsApp</p>
+                    <p class="bench-text">Where users were already building their own workaround. The familiarity of groups and direct sharing was a key behavioral signal.</p>
+                </div>
             </div>
-            <div class="bench-card">
-                <p class="bench-app">Netflix</p>
-                <p class="bench-insight">The "Top 10 in your country" section proved that social proof drives clicks, even with strangers. With trusted contacts it would be far more effective.</p>
-            </div>
-            <div class="bench-card">
-                <p class="bench-app">HBO Max</p>
-                <p class="bench-insight">Clean content categorization and watchlist sharing features. A reference for information architecture in streaming.</p>
-            </div>
-            <div class="bench-card">
-                <p class="bench-app">WhatsApp</p>
-                <p class="bench-insight">Where users were already managing their own recommendation system. The familiarity of groups and direct sharing was a key behavioral signal.</p>
-            </div>
-            <div class="bench-card">
-                <p class="bench-app">Key insight</p>
-                <p class="bench-insight">No streaming platform had fully committed to trusted-circle recommendations as a primary discovery surface. This was the opportunity.</p>
+
+            <div class="bench-conclusion">
+                <p class="bench-conclusion-label">Key insight</p>
+                <blockquote>No streaming platform had fully committed to trusted-circle recommendations as a primary discovery surface. This was the opportunity.</blockquote>
             </div>
         </div>
 
