@@ -239,7 +239,7 @@
             margin-bottom: 32px;
         }
         .bench-platform-row.two-col { grid-template-columns: repeat(2, 1fr); max-width: 66%; }
-        .bench-platform-card { display: flex; flex-direction: column; gap: 12px; }
+        .bench-platform-card { display: flex; flex-direction: column; gap: 0; }
         .bench-platform-screens {
             display: flex; gap: 8px; align-items: flex-start;
             min-height: 220px; overflow: hidden;
@@ -253,9 +253,9 @@
         .bench-name {
             font-size: 12px; font-weight: 600;
             letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--text);
+            color: var(--text); margin-top: 24px; margin-bottom: 6px;
         }
-        .bench-text { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+        .bench-text { font-size: 14px; color: var(--text-mid); line-height: 1.65; margin: 0; }
 
         /* BENCHMARK CONCLUSION */
         .bench-conclusion {
@@ -580,7 +580,7 @@
     <!-- SCREENS CAROUSEL -->
     <div class="reveal" style="margin-top: 16px;">
         <div class="carousel" id="carousel">
-            <span class="carousel-counter"><span id="carouselCurrent">1</span> / <span id="carouselTotal">4</span></span>
+            <span class="carousel-counter"><span id="carouselCurrent">1</span> / <span id="carouselTotal">1</span></span>
 
             <button class="carousel-nav prev" id="carouselPrev" aria-label="Previous screen">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 14L6 9L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -597,34 +597,33 @@
                         <p class="carousel-caption">The "De Tu Círculo para ti" carousel sits just below the hero, making trusted recommendations immediately visible.</p>
                     </div>
                 </div>
+                <!-- slides 2-4 hidden until GIFs are ready
                 <div class="carousel-slide" data-index="1">
-                    <img src="assets/images/meliplay-circulo.jpg" alt="Tu Círculo hub showing friend groups and their recommendations" loading="lazy">
+                    <img src="assets/images/meliplay-circulo.gif" alt="Tu Círculo hub showing friend groups and their recommendations" loading="lazy">
                     <div class="carousel-label">
                         <p class="carousel-step">Screen 2: Tu Círculo</p>
                         <p class="carousel-caption">Users manage multiple circles, each aggregating recommendations from its members in one place.</p>
                     </div>
                 </div>
                 <div class="carousel-slide" data-index="2">
-                    <img src="assets/images/meliplay-share.jpg" alt="Share flow: sending a movie recommendation to a circle with a message" loading="lazy">
+                    <img src="assets/images/meliplay-share.gif" alt="Share flow: sending a movie recommendation to a circle with a message" loading="lazy">
                     <div class="carousel-label">
                         <p class="carousel-step">Screen 3: Share flow</p>
                         <p class="carousel-caption">Sharing a title sends a rich card with poster and message directly to a circle. No app-switching needed.</p>
                     </div>
                 </div>
                 <div class="carousel-slide" data-index="3">
-                    <img src="assets/images/meliplay-reviews.jpg" alt="Social reviews feed showing what friends are watching and rating" loading="lazy">
+                    <img src="assets/images/meliplay-reviews.gif" alt="Social reviews feed showing what friends are watching and rating" loading="lazy">
                     <div class="carousel-label">
                         <p class="carousel-step">Screen 4: Lo que dicen los demás</p>
                         <p class="carousel-caption">A trusted social review feed replacing critic scores with reactions from people you actually know.</p>
                     </div>
                 </div>
+                -->
             </div>
 
             <div class="carousel-dots" id="carouselDots">
                 <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
-                <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
-                <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
-                <button class="carousel-dot" data-index="3" aria-label="Slide 4"></button>
             </div>
         </div>
         <p class="carousel-hint">Use arrows or keyboard ← → to navigate</p>
