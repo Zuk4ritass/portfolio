@@ -663,6 +663,8 @@
 
         .clients {
             padding: 0 var(--pad) 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .clients-label {
@@ -675,7 +677,8 @@
         .clients-strip {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: clamp(32px, 5vw, 72px);
             padding: 36px 0 0;
         }
 
