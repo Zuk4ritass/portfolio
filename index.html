@@ -556,6 +556,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0;
+            height: 560px;
             background: var(--bg-dark);
             border-radius: 16px;
             overflow: hidden;
@@ -908,7 +909,7 @@
             .work { padding: 64px var(--pad); }
             .work-header { margin-bottom: 36px; }
 
-            .project-card { grid-template-columns: 1fr; }
+            .project-card { grid-template-columns: 1fr; height: auto; }
             .project-card:nth-child(even) .project-card-image { order: 1; }
             .project-card:nth-child(even) .project-card-body  { order: 2; }
             .project-card-image { aspect-ratio: 16/10; }
@@ -1072,11 +1073,36 @@
                 </div>
             </article>
 
-            <!-- More projects coming soon -->
-            <div class="project-card-soon reveal">
-                <p class="project-card-soon-title">More projects coming soon</p>
-                <p class="project-card-soon-text">New case studies on e-commerce, media, and AI-driven design are currently in progress.</p>
-            </div>
+            <!-- PROJECT 3 — Tienda Cerca & Heladas Express -->
+            <article class="project-card reveal" data-cursor="hover">
+                <div class="project-card-image" style="background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 40%, #0f2d1a 100%); display:flex; align-items:center; justify-content:center; position:relative;">
+                    <img src="assets/images/tienda-cerca-thumb.jpg" alt="Tienda Cerca and Heladas Express — neighborhood store delivery platform for Latin America" loading="lazy" width="1200" height="810" onerror="this.style.display='none'">
+                    <div style="position:absolute; text-align:center; pointer-events:none;">
+                        <div style="font-size:48px; margin-bottom:16px;">🏪</div>
+                        <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); font-family:'DM Sans',sans-serif;">Bavaria · AB InBev</div>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <div>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Bavaria · AB InBev</span>
+                            <span class="project-card-tag">Mobile UX</span>
+                            <span class="project-card-tag">E-commerce</span>
+                            <span class="project-card-tag">🏅 Cannes Grand Prix</span>
+                        </div>
+                        <h3 class="project-card-title">Tienda Cerca<br>&amp; Heladas Express</h3>
+                        <p class="project-card-desc">
+                            The MVP that sparked a Cannes Lions Grand Prix. Digitizing 425,000 neighborhood stores across Latin America — and then building an entire delivery platform from scratch for El Salvador.
+                        </p>
+                    </div>
+                    <a href="tienda-cerca.html" class="project-card-cta">
+                        View Case Study
+                        <svg class="arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                            <path d="M1 12L12 1M12 1H4M12 1V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
 
         </div>
     </section>

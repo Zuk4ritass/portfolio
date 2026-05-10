@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UX Case Study: Tienda Cerca & Heladas Express — Manuel Acero</title>
+    <meta name="description" content="UX case study by Manuel Acero: Designing the MVP of Tienda Cerca for Bavaria and the full Heladas Express platform. A Cannes Lions Grand Prix-winning initiative that digitized 425,000 neighborhood stores across Latin America.">
+    <meta name="keywords" content="Tienda Cerca, Heladas Express, Bavaria, AB InBev, UX design, Cannes Lions, tenderos, delivery app, Manuel Acero, UX designer portfolio, Colombia, El Salvador">
+    <link rel="canonical" href="https://manuelacero.com/tienda-cerca.html">
+
+    <meta property="og:title" content="UX Case Study: Tienda Cerca & Heladas Express — Manuel Acero">
+    <meta property="og:description" content="The MVP that sparked a Cannes Grand Prix. Digitizing 425,000 neighborhood stores across Latin America.">
+    <meta property="og:image" content="https://manuelacero.com/assets/images/tienda-cerca-thumb.jpg">
+    <meta property="og:url" content="https://manuelacero.com/tienda-cerca.html">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="es_CO">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#111111">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Tienda Cerca & Heladas Express",
+        "author": { "@type": "Person", "name": "Manuel Acero" },
+        "description": "UX case study on designing the MVP of Tienda Cerca for Bavaria and the full Heladas Express platform.",
+        "image": "https://manuelacero.com/assets/images/tienda-cerca-thumb.jpg"
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG6065EXF6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-TG6065EXF6');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #F5F4F0;
+            --bg-dark:      #111111;
+            --text:         #111111;
+            --text-mid:     #555555;
+            --text-soft:    #999999;
+            --text-inv:     #F5F4F0;
+            --border:       #DDDCD7;
+            --accent:       #4F46E5;
+            --award:        #C9A84C;
+            --white:        #FFFFFF;
+            --serif:        'Instrument Serif', Georgia, serif;
+            --sans:         'DM Sans', -apple-system, sans-serif;
+            --pad:          clamp(20px, 5vw, 80px);
+            --nav-h:        64px;
+            --ease:         cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg); color: var(--text);
+            font-family: var(--sans); font-size: 16px; line-height: 1.6;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
+        }
+        img { display: block; max-width: 100%; height: auto; }
+        a { color: inherit; text-decoration: none; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            height: var(--nav-h);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 var(--pad); z-index: 200;
+            background: rgba(245, 244, 240, 0.88);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo { font-family: var(--serif); font-size: 18px; letter-spacing: -0.02em; }
+        .nav-back {
+            font-size: 13px; color: var(--text-soft);
+            display: flex; align-items: center; gap: 8px;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        /* LAYOUT WRAPPER */
+        .case-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 var(--pad);
+        }
+
+        /* HERO */
+        .case-hero {
+            padding-top: calc(var(--nav-h) + 64px);
+        }
+
+        .case-tags {
+            display: flex; gap: 8px; flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .case-tag {
+            font-size: 10px; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--text-soft);
+            padding: 5px 14px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+        }
+        .case-tag-award {
+            font-size: 10px; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--award);
+            padding: 5px 14px;
+            border: 1px solid var(--award);
+            border-radius: 100px;
+        }
+
+        .case-title {
+            font-family: var(--serif);
+            font-size: clamp(44px, 7vw, 88px);
+            line-height: 0.95;
+            letter-spacing: -0.01em;
+            margin-bottom: 28px;
+        }
+
+        .case-subtitle {
+            font-size: clamp(17px, 2vw, 21px);
+            font-weight: 300; color: var(--text-mid);
+            line-height: 1.7; max-width: 640px;
+        }
+
+        /* HERO IMAGE */
+        .case-hero-image {
+            margin-top: 64px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .case-hero-image img {
+            width: 100%;
+        }
+
+        /* META */
+        .case-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            margin-top: 64px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .meta-item {
+            background: var(--bg);
+            padding: 28px 20px;
+        }
+        .meta-label {
+            font-size: 10px; font-weight: 500;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 6px;
+        }
+        .meta-value {
+            font-size: 15px; font-weight: 400;
+            color: var(--text);
+        }
+
+        /* AWARD BANNER */
+        .award-banner {
+            margin-top: 48px;
+            padding: 24px 28px;
+            border: 1px solid var(--award);
+            border-radius: 12px;
+            background: rgba(201, 168, 76, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .award-icon {
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        .award-text strong {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--award);
+            margin-bottom: 4px;
+        }
+        .award-text span {
+            font-size: 14px;
+            color: var(--text-mid);
+            line-height: 1.5;
+        }
+
+        /* CONTENT SECTIONS */
+        .case-section {
+            padding: 80px 0;
+        }
+
+        .case-section h2 {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.1;
+            letter-spacing: 0em;
+            margin-bottom: 28px;
+        }
+        .case-section h2 em { font-style: italic; }
+
+        .case-section h3 {
+            font-size: 18px; font-weight: 500;
+            margin-top: 40px; margin-bottom: 12px;
+        }
+
+        .case-section p {
+            font-size: 17px; line-height: 1.85;
+            color: var(--text-mid);
+            margin-bottom: 20px;
+        }
+
+        .case-section ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        .case-section ul li {
+            font-size: 17px; line-height: 1.85;
+            color: var(--text-mid);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .case-section ul li::before {
+            content: '';
+            position: absolute; left: 0; top: 12px;
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* FULL-WIDTH IMAGE */
+        .case-image {
+            margin-bottom: 20px;
+        }
+        .case-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+        .case-image-caption {
+            font-size: 13px; color: var(--text-soft);
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        /* STAT ROW */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
+        .stat-item {
+            background: var(--bg);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .stat-number {
+            font-family: var(--serif);
+            font-size: clamp(36px, 5vw, 52px);
+            line-height: 1;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-soft);
+            line-height: 1.4;
+        }
+
+        /* HIGHLIGHT BLOCK */
+        .case-highlight {
+            margin-bottom: 64px;
+        }
+        .case-highlight blockquote {
+            font-family: var(--serif);
+            font-size: clamp(24px, 3vw, 36px);
+            line-height: 1.4;
+            font-style: italic;
+            color: var(--text);
+            border-left: 3px solid var(--accent);
+            padding-left: 28px;
+        }
+
+        /* DIVIDER */
+        .case-divider {
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* EVOLUTION TIMELINE */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 48px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px; top: 8px; bottom: 8px;
+            width: 1px;
+            background: var(--border);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute;
+            left: -28px; top: 6px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg);
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+        .timeline-date {
+            font-size: 11px; font-weight: 500;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 6px;
+        }
+        .timeline-title {
+            font-size: 17px; font-weight: 500;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .timeline-desc {
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        /* CAROUSEL */
+        .carousel {
+            position: relative;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: clamp(32px, 5vw, 64px) clamp(24px, 4vw, 56px);
+            overflow: hidden;
+        }
+
+        .carousel-viewport {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: clamp(420px, 55vw, 620px);
+        }
+
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+            pointer-events: none;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        .carousel-slide.exit-left {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+
+        .carousel-slide img {
+            height: clamp(320px, 45vw, 500px);
+            width: auto;
+            max-width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .carousel-label {
+            text-align: center;
+        }
+
+        .carousel-step {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 6px;
+        }
+
+        .carousel-caption {
+            font-size: 15px;
+            color: var(--text-mid);
+            max-width: 340px;
+            line-height: 1.5;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--white);
+            color: var(--text);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            z-index: 10;
+        }
+        .carousel-nav:hover {
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
+        }
+        .carousel-nav:active { transform: translateY(-50%) scale(0.94); }
+        .carousel-nav.prev { left: clamp(8px, 2vw, 20px); }
+        .carousel-nav.next { right: clamp(8px, 2vw, 20px); }
+        .carousel-nav:disabled {
+            opacity: 0.25;
+            cursor: default;
+        }
+        .carousel-nav:disabled:hover { background: var(--white); color: var(--text); border-color: var(--border); }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 28px;
+        }
+
+        .carousel-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.25s;
+            padding: 0;
+        }
+        .carousel-dot.active {
+            background: var(--text);
+            transform: scale(1.25);
+        }
+        .carousel-dot:hover:not(.active) {
+            background: var(--text-soft);
+        }
+
+        .carousel-counter {
+            position: absolute;
+            top: clamp(16px, 2vw, 28px);
+            right: clamp(16px, 3vw, 32px);
+            font-size: 13px;
+            color: var(--text-soft);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .carousel-hint {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--text-soft);
+            letter-spacing: 0.04em;
+        }
+
+        /* NEXT PROJECT */
+        .case-next {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .case-next-label {
+            font-size: 11px; font-weight: 500;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 20px;
+        }
+        .case-next a {
+            font-family: var(--serif);
+            font-size: clamp(32px, 5vw, 56px);
+            letter-spacing: -0.02em;
+            transition: color 0.2s;
+        }
+        .case-next a:hover { color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            padding: 24px var(--pad);
+            border-top: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        footer span { font-size: 12px; color: var(--text-soft); }
+
+        /* REVEAL */
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .case-meta { grid-template-columns: 1fr 1fr; }
+            .stat-row { grid-template-columns: 1fr; }
+            .award-banner { flex-direction: column; text-align: center; }
+            .carousel { padding: 28px 16px; border-radius: 14px; }
+            .carousel-viewport { min-height: 380px; }
+            .carousel-slide img { height: 300px; }
+            .carousel-caption { font-size: 13px; max-width: 280px; }
+            .case-image[style*="display: flex"] {
+                flex-wrap: wrap !important;
+                gap: 24px !important;
+            }
+            .case-image[style*="display: flex"] > div {
+                max-width: 260px !important;
+                flex: 1 1 260px !important;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .case-meta { grid-template-columns: 1fr; }
+            .carousel-viewport { min-height: 340px; }
+            .carousel-slide img { height: 250px; }
+            .case-image[style*="display: flex"] > div {
+                max-width: 220px !important;
+            }
+        }
+
+        /* Placeholder for missing images */
+        .img-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            color: rgba(255,255,255,0.25);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-family: var(--sans);
+        }
+        .img-placeholder span { font-size: 32px; }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="/" class="nav-logo">Manuel Acero</a>
+        <a href="/" class="nav-back">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to portfolio
+        </a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="case-wrap">
+
+    <!-- HERO -->
+    <section class="case-hero">
+        <div class="case-tags">
+            <span class="case-tag">Bavaria · AB InBev</span>
+            <span class="case-tag">Product Design</span>
+            <span class="case-tag">Mobile UX</span>
+            <span class="case-tag">E-commerce</span>
+            <span class="case-tag-award">🏅 Cannes Lions Grand Prix 2021</span>
+        </div>
+        <h1 class="case-title">The neighborhood<br><em>store goes</em> digital</h1>
+        <p class="case-subtitle">
+            How I designed the MVP that sparked a Cannes Grand Prix — and then built an entire delivery platform from scratch for a new market.
+        </p>
+    </section>
+
+    <!-- HERO IMAGE -->
+    <div class="case-hero-image" style="margin-top: 64px; background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 45%, #0f2d1a 100%); min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative;">
+        <img src="assets/images/tienda-cerca-thumb.jpg" alt="Tienda Cerca and Heladas Express platform overview — neighborhood store delivery for Latin America" width="1200" height="675" fetchpriority="high" onerror="this.style.display='none'" style="position:relative; z-index:1;">
+        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;" id="heroPlaceholder">
+            <div style="font-size:64px;">🏪</div>
+            <p style="font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.35); font-family:var(--sans);">Bavaria · AB InBev · Tienda Cerca · Heladas Express</p>
+        </div>
+    </div>
+    <script>
+        document.querySelector('[fetchpriority="high"]').addEventListener('load', function() {
+            document.getElementById('heroPlaceholder').style.display = 'none';
+        });
+    </script>
+
+    <!-- META -->
+    <div class="case-meta">
+        <div class="meta-item">
+            <p class="meta-label">Company</p>
+            <p class="meta-value">Bavaria · AB InBev</p>
+        </div>
+        <div class="meta-item">
+            <p class="meta-label">Role</p>
+            <p class="meta-value">Sr. UX Designer</p>
+        </div>
+        <div class="meta-item">
+            <p class="meta-label">Context</p>
+            <p class="meta-value">Digital Marketing</p>
+        </div>
+        <div class="meta-item">
+            <p class="meta-label">Tools</p>
+            <p class="meta-value">Figma · Sprints</p>
+        </div>
+    </div>
+
+    <!-- AWARD BANNER -->
+    <div class="award-banner reveal">
+        <div class="award-icon">🏅</div>
+        <div class="award-text">
+            <strong>Cannes Lions Grand Prix 2021 — Creative eCommerce</strong>
+            <span>The first Grand Prix ever awarded to a Colombian initiative at Cannes Lions. Tienda Cerca connected over 425,000 neighborhood stores across Latin America during COVID-19.</span>
+        </div>
+    </div>
+
+    <!-- AT A GLANCE -->
+    <section class="case-section reveal">
+        <h2>At a <em>glance</em></h2>
+        <ul>
+            <li><strong>The problem:</strong> COVID-19 shut down foot traffic overnight. Hundreds of thousands of small neighborhood shops — the backbone of Latin American commerce — had no way to reach their customers remotely</li>
+            <li><strong>My role:</strong> Sr. UX Designer at Bavaria's Digital Marketing team. I built the MVP of Tienda Cerca, then led the full design of Heladas Express for El Salvador</li>
+            <li><strong>The approach:</strong> Sprint-based design, geolocation-first, adapted to each market's context and branding</li>
+            <li><strong>The outcome:</strong> A platform that won a Cannes Grand Prix, reached 9 countries, and evolved into multiple regional products still running today</li>
+        </ul>
+    </section>
+
+    <div class="case-divider"></div>
+
+    <!-- CONTEXT -->
+    <section class="case-section reveal">
+        <h2>The <em>context</em></h2>
+        <p>
+            In March 2020, Colombia went into one of the strictest lockdowns in Latin America. For millions of people, the <em>tienda de barrio</em> — the corner grocery store — was the lifeline for daily essentials. But overnight, social distancing made those visits impossible.
+        </p>
+        <p>
+            Bavaria, part of AB InBev's Latin American operations, saw an opportunity to act fast: give those neighborhood stores a digital presence so they could keep operating through delivery, and give consumers a way to find their nearest store without leaving home.
+        </p>
+        <p>
+            I was the Sr. UX Designer embedded in Bavaria's Digital Marketing team, working alongside DraftLine — AB InBev's in-house creative studio — to design the platform from the ground up.
+        </p>
+    </section>
+
+    <!-- HIGHLIGHT -->
+    <div class="case-highlight reveal">
+        <blockquote>
+            The corner store has always been there for the neighborhood. We needed to make sure the neighborhood could still find it.
+        </blockquote>
+    </div>
+
+    <div class="case-divider"></div>
+
+    <!-- THE MVP -->
+    <section class="case-section reveal">
+        <h2>Building the <em>MVP</em></h2>
+        <p>
+            The core challenge was deceptively simple: load a database of neighborhood stores onto a city map, so that buyers could find the stores near them and request home delivery.
+        </p>
+        <p>
+            In practice, it required solving several UX problems at once:
+        </p>
+        <ul>
+            <li><strong>Geolocation first:</strong> The experience had to start from where the user actually was. We used the device's location to surface only the relevant stores — no search needed, no friction</li>
+            <li><strong>Two sides of one product:</strong> Buyers needed to find stores quickly. Store owners needed to register and manage their digital presence. Both flows had to be simple enough to work for people with limited digital experience</li>
+            <li><strong>Speed over perfection:</strong> We launched the MVP in weeks, not months. Sprint-based design meant shipping fast, learning from real users, and iterating. The map was live before the UI was polished</li>
+            <li><strong>WhatsApp as the transaction layer:</strong> Rather than building a full checkout, the MVP connected buyers directly to stores via WhatsApp. This removed technical barriers for store owners while keeping the experience familiar</li>
+        </ul>
+    </section>
+
+    <!-- SCREENS: Tienda Cerca -->
+    <div class="case-image reveal" style="display: flex; gap: 16px; align-items: flex-start; justify-content: center;">
+        <div style="flex: 1; max-width: 280px;">
+            <img src="assets/images/tienda-cerca-map.jpg" alt="Tienda Cerca map view: neighborhood stores pinned on city map with geolocation" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="720">
+            <p class="case-image-caption" style="text-align: center; margin-top: 12px;">Map view — find your nearest store</p>
+        </div>
+        <div style="flex: 1; max-width: 280px;">
+            <img src="assets/images/tienda-cerca-store.jpg" alt="Store profile: name, address, WhatsApp contact, and product availability" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="720">
+            <p class="case-image-caption" style="text-align: center; margin-top: 12px;">Store profile — contact directly via WhatsApp</p>
+        </div>
+        <div style="flex: 1; max-width: 280px;">
+            <img src="assets/images/tienda-cerca-register.jpg" alt="Store owner registration flow: simple form to get listed on the platform" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="720">
+            <p class="case-image-caption" style="text-align: center; margin-top: 12px;">Store owner registration — go live in minutes</p>
+        </div>
+    </div>
+
+    <div class="case-divider"></div>
+
+    <!-- IMPACT & AWARD -->
+    <section class="case-section reveal">
+        <h2>The <em>impact</em></h2>
+        <p>
+            Tienda Cerca launched on March 28, 2020 — less than two weeks after Colombia's national lockdown. In its first month, the platform received over 10 million visits.
+        </p>
+
+        <div class="stat-row">
+            <div class="stat-item">
+                <div class="stat-number">425K+</div>
+                <div class="stat-label">neighborhood stores registered<br>across Latin America</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">9</div>
+                <div class="stat-label">countries where the platform<br>was deployed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1M+</div>
+                <div class="stat-label">families impacted<br>in Colombia alone</div>
+            </div>
+        </div>
+
+        <p>
+            In 2021, Tienda Cerca was awarded the <strong>Grand Prix at Cannes Lions</strong> in the Creative eCommerce category — the first Grand Prix ever won by a Colombian initiative at the festival. The jury recognized it not just as a creative campaign, but as a genuine business and social solution: a product that kept economies running during a crisis.
+        </p>
+    </section>
+
+    <div class="case-divider"></div>
+
+    <!-- HELADAS EXPRESS -->
+    <section class="case-section reveal">
+        <h2>Taking it to <em>El Salvador</em></h2>
+        <p>
+            After the success of Tienda Cerca in Colombia, AB InBev's regional strategy was to replicate and adapt the model across other Latin American markets. I was responsible for designing the entire platform for El Salvador — operated by La Constancia, AB InBev's local subsidiary.
+        </p>
+        <p>
+            The brief was clear: same concept, different context. El Salvador had different consumer habits, a different brand portfolio, and a completely new visual identity to build around.
+        </p>
+
+        <h3>What changed</h3>
+        <ul>
+            <li><strong>Brand new identity:</strong> "Heladas Express" — centered on the promise of cold, ready-to-drink beers delivered fast. The brand had its own color system, typography, and tone distinct from Tienda Cerca</li>
+            <li><strong>Product-first catalog:</strong> Unlike Tienda Cerca's store-finder model, Heladas Express led with a product catalog — users browsed beverages first, then the platform connected them to the nearest store</li>
+            <li><strong>Cold guarantee:</strong> A core UX promise: beers arrive chilled and ready to drink. This required clear messaging at every step of the order flow</li>
+            <li><strong>Sprint-based execution:</strong> The entire platform — from login to checkout confirmation — was designed and shipped in sprint cycles, iterating in close collaboration with engineering and local business stakeholders</li>
+        </ul>
+    </section>
+
+    <!-- HELADAS EXPRESS CAROUSEL -->
+    <div class="reveal" style="margin-top: 48px;">
+        <div class="carousel" id="carousel">
+            <span class="carousel-counter"><span id="carouselCurrent">1</span> / <span id="carouselTotal">5</span></span>
+
+            <button class="carousel-nav prev" id="carouselPrev" aria-label="Previous screen">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 14L6 9L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="carousel-nav next" id="carouselNext" aria-label="Next screen">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4L12 9L7 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+            <div class="carousel-viewport">
+                <div class="carousel-slide active" data-index="0">
+                    <img src="assets/images/heladas-login.jpg" alt="Heladas Express login screen with phone number authentication" loading="lazy">
+                    <div class="carousel-label">
+                        <p class="carousel-step">Screen 1 — Login</p>
+                        <p class="carousel-caption">Phone-first authentication. Low friction entry point designed for quick repeat access.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" data-index="1">
+                    <img src="assets/images/heladas-address.jpg" alt="Address and map selection screen with geolocation pin" loading="lazy">
+                    <div class="carousel-label">
+                        <p class="carousel-step">Screen 2 — Delivery address</p>
+                        <p class="carousel-caption">Map-based address selection with geolocation. The same core pattern from Tienda Cerca, adapted for the new brand.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" data-index="2">
+                    <img src="assets/images/heladas-home.jpg" alt="Heladas Express home screen with featured products and promotions" loading="lazy">
+                    <div class="carousel-label">
+                        <p class="carousel-step">Screen 3 — Home</p>
+                        <p class="carousel-caption">Product catalog front and center. Featured promos and the "cold guarantee" banner anchor the experience.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" data-index="3">
+                    <img src="assets/images/heladas-product.jpg" alt="Product detail page with beer options, price, and add to cart" loading="lazy">
+                    <div class="carousel-label">
+                        <p class="carousel-step">Screen 4 — Product detail</p>
+                        <p class="carousel-caption">Clear product info, price, and quantity selector. Designed for speed — most users know what they want.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" data-index="4">
+                    <img src="assets/images/heladas-checkout.jpg" alt="Order confirmation screen with delivery time and cold guarantee badge" loading="lazy">
+                    <div class="carousel-label">
+                        <p class="carousel-step">Screen 5 — Confirmation</p>
+                        <p class="carousel-caption">The cold guarantee is reinforced at checkout. Clear delivery time, order summary, and reassurance close the loop.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-dots" id="carouselDots">
+                <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+                <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+                <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+                <button class="carousel-dot" data-index="3" aria-label="Slide 4"></button>
+                <button class="carousel-dot" data-index="4" aria-label="Slide 5"></button>
+            </div>
+        </div>
+        <p class="carousel-hint">Use arrows or keyboard ← → to navigate</p>
+    </div>
+
+    <div class="case-divider"></div>
+
+    <!-- EVOLUTION -->
+    <section class="case-section reveal">
+        <h2>From MVP to <em>ecosystem</em></h2>
+        <p>
+            What started as an emergency response to a pandemic became a platform strategy that AB InBev replicated across the continent. Each market adapted the core model to its own context.
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <p class="timeline-date">March 2020 — Colombia</p>
+                <p class="timeline-title">Tienda Cerca MVP</p>
+                <p class="timeline-desc">Map-based store finder. Geolocation + WhatsApp as the delivery engine. Launched in under two weeks from the national lockdown announcement.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <p class="timeline-date">2021 — El Salvador</p>
+                <p class="timeline-title">Heladas Express</p>
+                <p class="timeline-desc">Full platform redesign for the Salvadoran market. New brand, product-first catalog model, cold guarantee, and end-to-end checkout flow — designed and shipped by sprints.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <p class="timeline-date">2021 — Cannes Lions</p>
+                <p class="timeline-title">Grand Prix · Creative eCommerce</p>
+                <p class="timeline-desc">Tienda Cerca awarded the highest honor at Cannes Lions 2021. First Grand Prix for Colombia in the festival's history. Recognized as both a creative and social impact initiative.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot" style="background: var(--text-soft);"></div>
+                <p class="timeline-date">Onwards</p>
+                <p class="timeline-title">TaDa Delivery & beyond</p>
+                <p class="timeline-desc">Heladas Express evolved into TaDa Delivery — a full-featured beverage delivery app now operating across multiple AB InBev markets. The platform architecture and UX foundations built in those early sprints are still running today.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="case-divider"></div>
+
+    <!-- LEARNINGS -->
+    <section class="case-section reveal">
+        <h2>What I <em>learned</em></h2>
+        <p>
+            <strong>Speed and quality aren't opposites.</strong> The MVP launched in weeks, but it worked because we made deliberate decisions about what to simplify. We didn't cut UX quality — we cut scope. WhatsApp instead of a checkout. A map instead of a search index. Every constraint became a design decision.
+        </p>
+        <p>
+            <strong>Context changes everything.</strong> Tienda Cerca and Heladas Express shared the same idea, but they were different products. Building for El Salvador meant understanding a different consumer culture, a different brand promise, and a different regulatory environment. Copy, tone, and visual hierarchy all had to shift.
+        </p>
+        <p>
+            <strong>Sprint culture is a design superpower when used right.</strong> Working in sprints forced us to ship, get feedback, and adapt. There's no perfect version one. The version that launched was better than any prototype we could have polished in isolation for six months.
+        </p>
+        <p>
+            <strong>Design at scale starts with a single flow.</strong> The map view. The store registration form. The WhatsApp handoff. Those three flows from the MVP became the foundation for a platform that now connects hundreds of thousands of stores. Getting them right — simple, fast, clear — was the whole job.
+        </p>
+    </section>
+
+    <!-- NEXT -->
+    <section class="case-next">
+        <p class="case-next-label">Next case study</p>
+        <a href="/meli-play.html">Meli Play · Tu Círculo</a>
+    </section>
+
+    </div><!-- /.case-wrap -->
+
+    <!-- FOOTER -->
+    <footer>
+        <span>&copy; 2026 Manuel Acero</span>
+        <span>Bogotá, Colombia</span>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        // Replace broken images with styled placeholder
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                const w = this.style.width || '100%';
+                const h = this.style.height || (this.closest('.carousel-slide') ? '420px' : '340px');
+                const placeholder = document.createElement('div');
+                placeholder.className = 'img-placeholder';
+                placeholder.style.width = w;
+                placeholder.style.height = h;
+                placeholder.innerHTML = '<span>📐</span>Coming soon';
+                this.replaceWith(placeholder);
+            });
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Carousel
+        (() => {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            const counter = document.getElementById('carouselCurrent');
+            const total = slides.length;
+            let current = 0;
+
+            function goTo(index) {
+                if (index < 0 || index >= total || index === current) return;
+
+                slides.forEach(s => {
+                    s.classList.remove('active');
+                    s.style.transform = '';
+                });
+
+                current = index;
+                slides[current].classList.add('active');
+
+                dots.forEach(d => d.classList.remove('active'));
+                dots[current].classList.add('active');
+
+                counter.textContent = current + 1;
+
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === total - 1;
+            }
+
+            prevBtn.addEventListener('click', () => goTo(current - 1));
+            nextBtn.addEventListener('click', () => goTo(current + 1));
+            prevBtn.disabled = true;
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
+            });
+
+            document.addEventListener('keydown', (e) => {
+                const rect = document.getElementById('carousel').getBoundingClientRect();
+                const inView = rect.top < window.innerHeight && rect.bottom > 0;
+                if (!inView) return;
+                if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+                if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+            });
+
+            let touchStartX = 0;
+            const carousel = document.getElementById('carousel');
+            carousel.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+            carousel.addEventListener('touchend', (e) => {
+                const diff = touchStartX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) {
+                    diff > 0 ? goTo(current + 1) : goTo(current - 1);
+                }
+            }, { passive: true });
+        })();
+    </script>
+
+</body>
+</html>
