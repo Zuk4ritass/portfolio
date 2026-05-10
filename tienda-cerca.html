@@ -618,18 +618,49 @@
         </p>
     </section>
 
-    <!-- HERO IMAGE -->
-    <div class="case-hero-image" style="margin-top: 64px; background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 45%, #0f2d1a 100%); min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative;">
-        <img src="assets/images/tienda-cerca-thumb.jpg" alt="Tienda Cerca and Heladas Express platform overview — neighborhood store delivery for Latin America" width="1200" height="675" fetchpriority="high" onerror="this.style.display='none'" style="position:relative; z-index:1;">
-        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;" id="heroPlaceholder">
-            <div style="font-size:64px;">🏪</div>
-            <p style="font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.35); font-family:var(--sans);">Bavaria · AB InBev · Tienda Cerca · Heladas Express</p>
+    <!-- HERO VIDEO -->
+    <div class="case-hero-image" style="margin-top: 64px;">
+        <div id="videoThumb" style="position:relative; cursor:pointer; border-radius:16px; overflow:hidden; background:#000;" onclick="loadVideo()">
+            <img src="assets/images/tienda-cerca-campaign.jpg"
+                 alt="Tienda Cerca — El comercio hiperlocal más grande del país"
+                 style="width:100%; display:block; transition:opacity 0.3s;"
+                 fetchpriority="high"
+                 onerror="this.src='assets/images/tienda-cerca-thumb.jpg'">
+            <!-- Play button overlay -->
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.25); transition:background 0.3s;" id="playOverlay">
+                <div style="width:72px; height:72px; border-radius:50%; background:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 24px rgba(0,0,0,0.3); transition:transform 0.2s;">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                        <path d="M9 6L21 13L9 20V6Z" fill="#111111"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div id="videoEmbed" style="display:none; border-radius:16px; overflow:hidden; position:relative; padding-bottom:56.25%; height:0;">
+            <iframe id="fbVideo"
+                src=""
+                style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+                scrolling="no"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
         </div>
     </div>
     <script>
-        document.querySelector('[fetchpriority="high"]').addEventListener('load', function() {
-            document.getElementById('heroPlaceholder').style.display = 'none';
+        document.getElementById('videoThumb').addEventListener('mouseenter', function() {
+            document.getElementById('playOverlay').style.background = 'rgba(0,0,0,0.4)';
+            document.getElementById('playOverlay').querySelector('div').style.transform = 'scale(1.08)';
         });
+        document.getElementById('videoThumb').addEventListener('mouseleave', function() {
+            document.getElementById('playOverlay').style.background = 'rgba(0,0,0,0.25)';
+            document.getElementById('playOverlay').querySelector('div').style.transform = 'scale(1)';
+        });
+        function loadVideo() {
+            document.getElementById('videoThumb').style.display = 'none';
+            const embed = document.getElementById('videoEmbed');
+            embed.style.display = 'block';
+            document.getElementById('fbVideo').src =
+                'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D539101870774591&show_text=false&autoplay=true';
+        }
     </script>
 
     <!-- META -->
@@ -717,15 +748,15 @@
     <!-- SCREENS: Tienda Cerca -->
     <div class="case-image reveal" style="display: flex; gap: 16px; align-items: flex-start; justify-content: center;">
         <div style="flex: 1; max-width: 280px;">
-            <img src="assets/images/tienda-cerca-home.png" alt="Tienda Cerca home: neighborhood stores listed with name, address and WhatsApp contact" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="720">
+            <img src="assets/images/tienda-cerca-home.jpg" alt="Tienda Cerca home: neighborhood stores listed with name, address and WhatsApp contact" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="720">
             <p class="case-image-caption" style="text-align: center; margin-top: 12px;">Home — lista de tiendas cerca de ti</p>
         </div>
         <div style="flex: 1; max-width: 280px;">
-            <img src="assets/images/mapa.png" alt="Tienda Cerca map view: neighborhood stores pinned on city map with geolocation" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="720">
+            <img src="assets/images/mapa.jpg" alt="Tienda Cerca map view: neighborhood stores pinned on city map with geolocation" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="720">
             <p class="case-image-caption" style="text-align: center; margin-top: 12px;">Map view — encuentra tu tienda más cercana</p>
         </div>
         <div style="flex: 1; max-width: 280px;">
-            <img src="assets/images/tienda-cerca-seller.png" alt="Store seller profile: name, address, WhatsApp contact and product availability" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="720">
+            <img src="assets/images/tienda-cerca-seller.jpg" alt="Store seller profile: name, address, WhatsApp contact and product availability" style="border-radius: 12px; border: 1px solid var(--border);" loading="lazy" width="360" height="720">
             <p class="case-image-caption" style="text-align: center; margin-top: 12px;">Seller profile — contacta directo por WhatsApp</p>
         </div>
     </div>
