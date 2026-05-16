@@ -38,7 +38,7 @@
 
     <!-- Security -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://*.analytics.google.com https://api.web3forms.com; frame-src https://challenges.cloudflare.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://*.analytics.google.com https://api.web3forms.com;">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Theme & Favicon -->
@@ -117,9 +117,6 @@
         gtag('js', new Date());
         gtag('config', 'G-TG6065EXF6');
     </script>
-
-    <!-- Cloudflare Turnstile (anti-spam) -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <!-- Preload critical assets -->
     <link rel="preload" href="assets/images/retrato.png" as="image">
@@ -869,9 +866,7 @@
         .form-group textarea:focus { border-color: var(--text); }
         .form-group textarea { min-height: 110px; }
 
-        .cf-turnstile { margin: 8px 0 28px; }
-
-        .form-submit { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.form-submit { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 
         .btn-send {
             display: inline-flex; align-items: center; gap: 10px;
@@ -1254,9 +1249,6 @@
                 <textarea id="cf-message" name="message" placeholder="Tell me about your project..." required></textarea>
             </div>
 
-            <!-- Cloudflare Turnstile — replace data-sitekey with yours from dash.cloudflare.com/turnstile -->
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAADQqg3tR_6BUrbIJ" data-theme="light"></div>
-
             <div class="form-submit">
                 <button type="submit" class="btn-send" id="submitBtn">
                     Send message
@@ -1347,7 +1339,7 @@
                         status.className = 'form-status success';
                         status.textContent = 'Message sent! I\'ll get back to you soon.';
                         contactForm.reset();
-                        if (window.turnstile) turnstile.reset();
+                        contactForm.reset();
                     } else {
                         throw new Error(data.message || JSON.stringify(data));
                     }
