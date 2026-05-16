@@ -1349,11 +1349,12 @@
                         contactForm.reset();
                         if (window.turnstile) turnstile.reset();
                     } else {
-                        throw new Error(data.message || 'Submission failed');
+                        throw new Error(data.message || JSON.stringify(data));
                     }
-                } catch {
+                } catch (err) {
                     status.className = 'form-status error';
                     status.textContent = 'Something went wrong. Please try again.';
+                    console.error('Form error:', err);
                 }
 
                 btn.disabled = false;
