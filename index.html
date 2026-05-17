@@ -879,6 +879,19 @@
         .btn-send:hover { opacity: 0.85; transform: translateY(-2px); }
         .btn-send:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
+        .btn-linkedin {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 14px 28px; border-radius: 100px;
+            font-size: 14px; font-weight: 500; font-family: var(--sans);
+            text-decoration: none;
+            transition: border-color 0.2s, transform 0.2s;
+            white-space: nowrap;
+        }
+        .btn-linkedin:hover { border-color: var(--text); transform: translateY(-2px); }
+
         .form-status { font-size: 14px; color: var(--text-soft); }
         .form-status.success { color: #22c55e; }
         .form-status.error { color: #ef4444; }
@@ -1225,7 +1238,6 @@
 
     <!-- ========== CONTACT ========== -->
     <section class="contact" id="contact">
-        <p class="contact-eyebrow reveal">Let's work together</p>
         <h2 class="contact-heading reveal">Say<br><em>hello.</em></h2>
 
         <form class="contact-form reveal" id="contactForm" novalidate>
@@ -1257,13 +1269,15 @@
                         <path d="M1 12L12 1M12 1H4M12 1V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
+                <a href="https://www.linkedin.com/in/manuel-acero/" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+                    View LinkedIn
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                        <path d="M1 12L12 1M12 1H4M12 1V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
                 <span class="form-status" id="formStatus" role="status" aria-live="polite"></span>
             </div>
         </form>
-
-        <div class="socials reveal">
-            <a href="https://www.linkedin.com/in/manuel-acero/" target="_blank" rel="noopener noreferrer" class="social">LinkedIn</a>
-        </div>
     </section>
 
     </main>
